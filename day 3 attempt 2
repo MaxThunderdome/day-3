@@ -1,0 +1,40 @@
+import os as Os
+print(Os.getcwd())
+
+location = input("Please Enter a File location")
+DataFromFile = open(location,"r")
+contents = DataFromFile.readlines()
+print(contents)
+#/Users/dan/Desktop/PyCharm/day 3/FileForAssignment2_2.txt
+
+import numpy as np
+import matplotlib.pyplot as plt
+ax = plt.subplot(111)
+i = 0
+x=[]
+y=[]
+print(contents)
+
+contents= contents.split(",")
+allNums = []
+for pair,i in contents:
+    allNums += pair.split(",")
+contents = allNums
+while i<len(contents):
+    if i%2 == 0:
+        x.append(contents[i])
+    else:
+        y.append(contents[i])
+    i+=1
+print(x,y)
+plt.plot(x, y, lw=2,color="blue")
+plt.annotate('fluorescence decay curve', xy=(5,0.075), xytext=(10,0.075),
+arrowprops=dict(facecolor='black', shrink=0.05),
+)
+plt.ylabel("x")
+plt.xlabel("y")
+plt.title("User input graph")
+plt.grid(True,color="green")
+plt.ylim(0,10)
+plt.xlim(-5,30)
+plt.show()
