@@ -1,0 +1,59 @@
+import os as Os
+print(Os.getcwd())
+#/Users/dan/Desktop/PyCharm/day 3/FileForAssignment2_2.txt
+
+location = input("Please Enter a File location")
+DataFromFile = open(location,"r")
+contents = DataFromFile.read()
+print(contents)
+contents=contents.split(",")
+newContents=[]
+for thing in contents:
+    newContents+=thing.split("\n")
+contents = newContents
+print(contents)
+
+import numpy as np
+import matplotlib.pyplot as plt
+plt.subplot(111)
+i = 0
+x=[]
+y=[]
+while i<len(contents):
+    if i%2 == 0:
+        x.append(contents[i])
+    else:
+        y.append(contents[i])
+    i+=1
+print(x,y)
+print("graph 1")
+plt.plot(x, y, lw=2,color="blue")
+plt.grid(True)
+plt.show()
+list2=[]
+list2_str = input("Please Enter Two new x,y points")
+list2=list2_str.split(",")
+newlist=[]
+for thing in list2:
+    newlist+=thing.split(" ")
+list2 = newlist
+print(list2)
+i=0
+while i<len(list2):
+    if i%2 == 0:
+        x.append(list2[i])
+    else:
+        y.append(list2[i])
+    i+=1
+print(x,y)
+plt.plot(x, y, lw=2,color="blue")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("graph 2")
+plt.grid(True)
+plt.show()
+outFile = open("FileForAssignment2_2.txt","a")
+#print(contents)
+outFile.write("\n")
+outFile.write(list2_str)
+outFile.close()
