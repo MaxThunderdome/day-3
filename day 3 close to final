@@ -1,0 +1,35 @@
+import os as Os
+print(Os.getcwd())
+#filelocation:
+#/Users/dan/Desktop/PyCharm/day 3/FileForAssignment2_2.txt
+
+location = input("Please Enter a File location")
+DataFromFile = open(location,"r")
+contents = DataFromFile.read()
+print(contents)
+contents=contents.split(",")
+newContents=[]
+for thing in contents:
+    newContents+=thing.split("\n")
+contents = newContents
+print(contents)
+
+import numpy as np
+import matplotlib.pyplot as plt
+plt.subplot(111)
+i = 0
+x=[]
+y=[]
+while i<len(contents):
+    if i%2 == 0:
+       x.append(contents[i])
+    else:
+        y.append(contents[i])
+    i+=1
+print(x,y)
+plt.plot(x, y, lw=2,color="blue")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("User input graph")
+plt.grid(True)
+plt.show()
